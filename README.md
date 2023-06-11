@@ -14,7 +14,7 @@ You need a Mac, a (healthy) notes store and installed _Xcode Command Line Utilit
 
 ## build
 
-`cd` into the directory you downloaded the source and call `clang -framework Foundation -framework ScriptingBridge -framework UniformTypeIdentifiers -framework CoreServices -lz -lsqlite3 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -target arm64-apple-macosx10.13 main.m -o anex`.
+`cd` into the directory you downloaded the source and call `clang -framework Foundation -framework ScriptingBridge -framework UniformTypeIdentifiers -framework CoreServices -framework CoreGraphics -framework CoreText -framework AppKit -lz -lsqlite3 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -target arm64-apple-macosx10.13 -fobjc-arc anex/main.m -o anexx` (anexx because clang otherwise complains about the name conflicting with directory).
 
 ## use
 
@@ -37,19 +37,20 @@ By default, a default set of styles is used and all notes are exported as HTML w
 
 ## exporting
 
-HTML is thought to be a base for further conversions. You may use pandoc
-
+HTML is thought to be a base for further conversions, although direct PDF export is supported as well.
 
 ## TODO
 
 - nicer default CSS (especially media stuff)
 - fancy javascript stuff, including a darkmode switch for HTML?
 - what the hell is my code, not to mention my CSS
+- why does CoreGraphics crash with certain PDF pages
 
 ## additional notes
 
 - The `Notes.h` in the anex folder has been created using the `sdef` and `sdp` utilities.
 - The colors have been identified using the "Digital Color Meter" app provided in macOS. Feel free to change anything in there.
+- If `CoreGraphics PDF has logged an error. Set environment variable "CG_PDF_VERBOSE" to learn more.`, don't worry. Your PDF pages might fall back on some fonts or something.
 
 ## credits
 
