@@ -14,7 +14,7 @@ You need a Mac, a (healthy) notes store and installed _Xcode Command Line Utilit
 
 ## build
 
-`cd` into the directory you downloaded the source and call `clang -framework Foundation -framework ScriptingBridge -framework UniformTypeIdentifiers -framework CoreServices -framework CoreGraphics -framework CoreText -framework AppKit -lz -lsqlite3 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -target arm64-apple-macosx10.13 -fobjc-arc anex/main.m -o anexx` (anexx because clang otherwise complains about the name conflicting with directory).
+`cd` into the directory you downloaded the source and call `clang -framework Foundation -framework ScriptingBridge -framework UniformTypeIdentifiers -framework CoreServices -framework CoreGraphics -framework CoreText -framework AppKit -framework Foundation -lz -lsqlite3 -arch x86_64 -arch arm64 -fobjc-arc anex/main.m -o anex.exec && mv -T anex.exec anex` (anex.exec because clang otherwise complains about the name conflicting with directory).
 
 ## use
 
